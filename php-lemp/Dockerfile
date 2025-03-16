@@ -1,20 +1,26 @@
-FROM debian:12
+FROM ubuntu:22.04
 
 
-#Instalar paquetes necesarios (php-fpm extensions php)
-# RUN apt update && apt install -y \
-#     curl \
-#     wget \
-#     git \
-#     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+#Instalar paquetes necesarios (apache php extensions php)
+RUN apt update && \
+    DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC \
+    apt install -y \
+    php8.1-fpm \
+    curl \
+    wget \
+    git \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
+
+RUN apt update && \
+    apt install -y php8.1-mysql php-xml php-gd php-json php-curl php-zip php-intl php-mbstring
 
 #Instalar composer
 
-#Instalar ferramentas npm se son necesarias
+RUN curl -sS https://getcomposer.org/installer | php -- \
+ --install-dir=/usr/local/bin --filename=composer
 
-#Instrucción para que o contedor escoite nun porto e non nun socket
 
-EXPOSE
+EXPOSE 9000
 
-#Instruciónn para que o servizo php-fpm se inicie
-CMD ["..."]
+CMD ["php-fpm8.1", "-F"]
