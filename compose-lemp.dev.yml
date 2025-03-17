@@ -7,24 +7,21 @@ services:
     volumes:
       - ./prestashop_8.2.1:/app
       - ./nginx-lemp/vhost-nginx.conf:/etc/nginx/conf.d/vhost-nginx.conf
-      - ./certs:/.certs
+      - ./certs:/etc/ssl/certs
     env_file:
       - .env.dev
     networks:
       redelamplemp:
         aliases:
           - test.lemp
-          - www.test.lemp
-
   phpserver:
-    build: php-lemp
+    build: ./php-lemp
     volumes:
       - ./prestashop_8.2.1:/app
-      - ./php-lemp/www.conf:/etc/php/8.1/fpm/pool.d/www.conf
     env_file:
       - .env.dev
     networks:
-      redelamplemp:
+      - redelamplemp
       
   basededatos:
     image: mysql:latest
@@ -32,7 +29,6 @@ services:
       - .env.dev
     volumes:
       - datos:/var/lib/mysql
-      - ./basededatos/backup-bd.sql:/basededatos/backup-bd.sql
     networks:
       redelamplemp:
 
@@ -42,7 +38,7 @@ services:
     networks:
       - redelamplemp
     environment:
-    - DISPLAY=${DISPLAY}
+    - DISPLAY=host.docker.internal:0
     volumes:
     - /tmp/.X11-unix:/tmp/.X11-unix  
 volumes:

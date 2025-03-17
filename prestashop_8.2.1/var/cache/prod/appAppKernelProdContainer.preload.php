@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/ContainerDaLh4DP/appAppKernelProdContainer.php';
+require __DIR__.'/ContainerLCqQo7O/appAppKernelProdContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -653,6 +653,14 @@ $classes[] = 'Context';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\DebugHandlersListener';
 $classes[] = 'Symfony\Component\HttpKernel\Debug\FileLinkFormatter';
 $classes[] = 'Symfony\Component\Stopwatch\Stopwatch';
+$classes[] = 'PrestaShop\Module\DistributionApiClient\DistributionApi';
+$classes[] = 'PrestaShop\CircuitBreaker\Contract\CircuitBreakerInterface';
+$classes[] = 'PrestaShop\CircuitBreaker\AdvancedCircuitBreakerFactory';
+$classes[] = 'PrestaShop\CircuitBreaker\FactorySettings';
+$classes[] = 'GuzzleHttp\HandlerStack';
+$classes[] = 'PrestaShop\Module\DistributionApiClient\Middleware\Cache';
+$classes[] = 'Doctrine\Common\Cache\Psr6\DoctrineProvider';
+$classes[] = 'PrestaShop\Module\DistributionApiClient\ShopDataProvider';
 $classes[] = 'Symfony\Component\Cache\DoctrineProvider';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ClearMetadataCacheDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ClearQueryCacheDoctrineCommand';
@@ -1645,7 +1653,6 @@ $classes[] = 'PrestaShop\PrestaShop\Core\Backup\Comparator\BackupByDateComparato
 $classes[] = 'PrestaShop\PrestaShop\Core\Backup\Listing\BackupGridDataFactory';
 $classes[] = 'PrestaShop\PrestaShop\Core\Backup\Configuration\BackupOptionsConfiguration';
 $classes[] = 'PrestaShop\PrestaShop\Core\Cache\Clearer\CacheClearerChain';
-$classes[] = 'PrestaShop\CircuitBreaker\AdvancedCircuitBreakerFactory';
 $classes[] = 'PrestaShop\CircuitBreaker\Storage\DoctrineCache';
 $classes[] = 'PrestaShop\PrestaShop\Core\CMS\CmsPageViewDataProvider';
 $classes[] = 'PrestaShop\PrestaShop\Core\CommandBus\TacticianCommandBusAdapter';
@@ -1666,8 +1673,6 @@ $classes[] = 'PrestaShop\PrestaShop\Core\ConstraintValidator\IsUrlRewriteValidat
 $classes[] = 'PrestaShop\PrestaShop\Core\ConstraintValidator\TypedRegexValidator';
 $classes[] = 'PrestaShop\PrestaShop\Core\CreditSlip\CreditSlipOptionsConfiguration';
 $classes[] = 'PrestaShop\PrestaShop\Core\Crypto\Hashing';
-$classes[] = 'PrestaShop\CircuitBreaker\Contract\CircuitBreakerInterface';
-$classes[] = 'PrestaShop\CircuitBreaker\FactorySettings';
 $classes[] = 'PrestaShop\PrestaShop\Core\Currency\CurrencyGridDataFactory';
 $classes[] = 'PrestaShop\PrestaShop\Adapter\StockManager';
 $classes[] = 'PrestaShop\PrestaShop\Core\Domain\Country\ZipCodePatternResolver';

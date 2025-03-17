@@ -1,26 +1,23 @@
 FROM ubuntu:22.04
 
 
-#Instalar paquetes necesarios (apache php extensions php)
-RUN apt update && \
-    DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC \
-    apt install -y \
-    php8.1-fpm \
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && apt install -y \
     curl \
     wget \
     git \
+    php8.1 \
+    php8.1-fpm \
+    libpci3 \
+    libegl1 \
+    libgl1-mesa-glx \
+    php-zip php-curl php-dom php-fileinfo php-gd php-iconv php-intl \
+    php-json php-mbstring php-pdo php-pdo-mysql php-xml \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-
-RUN apt update && \
-    apt install -y php8.1-mysql php-xml php-gd php-json php-curl php-zip php-intl php-mbstring
-
-#Instalar composer
-
-RUN curl -sS https://getcomposer.org/installer | php -- \
- --install-dir=/usr/local/bin --filename=composer
 
 
 EXPOSE 9000
 
-CMD ["php-fpm8.1", "-F"]
+
+CMD php-fpm8.1 -F
