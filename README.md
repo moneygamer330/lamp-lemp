@@ -14,7 +14,7 @@ Ejercicio de desarrollo LAMP y LEMP con Docker, solo funciona la parte de desarr
     
     - Para Nginx:
         ```sh
-        docker compose -f comopse-lemp.yml up --build
+        docker compose -f comopse-lemp.yml up --build 
         ```
         - Accede al servidor web navegando a `http://test.lamp` en tu navegador web.
 
