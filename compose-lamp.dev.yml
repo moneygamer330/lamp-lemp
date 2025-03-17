@@ -6,15 +6,14 @@ services:
       - "443:443"
     volumes:
       - ./prestashop_8.2.1:/app 
-      - ./apache-php-lamp/vhost-apache.conf:/etc/apache2/sites-enabled/000-default.conf
-      - ./certs:/.certs 
+      - ./apache-php-lamp/vhost-apache.conf:/etc/apache2/sites-enabled/vhost-apache.conf
+      - ./certs:/certs
     env_file:
       - .env.dev
     networks:
       redelamplemp:
         aliases:
           - test.lamp
-
   basededatos:
     image: mysql:latest
     env_file:
